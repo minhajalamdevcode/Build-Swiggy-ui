@@ -1,5 +1,16 @@
 import React, { useState } from 'react'
+import { MdVisibility } from 'react-icons/md';
 import { RxCaretDown } from "react-icons/rx";
+import { IoMdSearch } from "react-icons/io";
+import { BiSolidOffer } from "react-icons/bi";
+import { IoIosHelpBuoy } from "react-icons/io";
+import { PiSignIn } from "react-icons/pi";
+import { FaCartArrowDown } from "react-icons/fa";
+
+
+
+
+
 
 
 function Header() {
@@ -7,19 +18,55 @@ function Header() {
      const showSideMenu=()=>{
          usetoggle(true);
      } 
+     const hideSideMenu=()=>{
+        usetoggle(false);
+     }
+    //  const  social=[
+    //     {
+    //         icon:<IoMdSearch/>,
+    //         name:"Search"
+    //     },
+    //     {
+    //         icon:<BiSolidOffer/>,
+    //         name:"Offers"
+    //     }
+    //    ]
   return (
 
     <>
-    <div className='black-overlay w-full h-full fixed duration-500'style={{
-        opacity:toggle?1:0
-    }} ></div>
+    <div className='black-overlay w-full h-full fixed duration-500'onClick={hideSideMenu} style={{
+        opacity:toggle?1:0,
+        visibility:toggle?'visible':'hidden'
+    }} >
+      <div onClick={(e)=>{
+        e.stopPropagation();
+      }} className='w-[500px] h-full bg-white absolute duration-300'  style={{
+        left:toggle?'0%':'-100%'
+      }}></div>
+
+    </div>
     <header className='p-3 shadow-xl tex t-[#686b78] '>
         <div className='max-w[1200px] mx-auto border border-t-red-700 flex items-center gap-4'>
             <div className='w-[80px]'>
                <img src="images/logo.jpeg" alt="" className='w-full ' />
             </div>
             <div>
-        <span className='font-bold  border-b-[3px] border-black text-[#fc8019]'>Ranchi</span> Jharkhand <RxCaretDown  onClick={showSideMenu}fontSize={25}className=' font-bold inline  text-[#fc8019]' />
+        <span className='font-bold  border-b-[3px] border-black text-[#fc8019]'>Ranchi</span> Jharkhand <RxCaretDown  onClick={showSideMenu}fontSize={25}className=' font-bold inline  text-[#fc8019] cursor-pointer' />
+
+            </div>
+
+             <div className='flex list-none  gap-10 ml-auto font-lighter text-[18px]'>
+                <li className='flex items-center gap-3'><IoMdSearch/>
+                    Search</li>
+                <li className='flex items-center gap-3'><BiSolidOffer/>
+                    Offers</li>
+                <li className='flex items-center gap-3'><IoIosHelpBuoy/>
+                    Help</li>
+                <li className='flex items-center gap-3'><PiSignIn />
+                    Sign In</li> 
+                <li className='flex items-center gap-3'><FaCartArrowDown/>
+                    Cart</li>
+
 
             </div>
         </div>
