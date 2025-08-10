@@ -8,11 +8,6 @@ import { PiSignIn } from "react-icons/pi";
 import { FaCartArrowDown } from "react-icons/fa";
 
 
-
-
-
-
-
 function Header() {
     const[toggle,usetoggle]=useState(false)
      const showSideMenu=()=>{
@@ -21,16 +16,29 @@ function Header() {
      const hideSideMenu=()=>{
         usetoggle(false);
      }
-    //  const  social=[
-    //     {
-    //         icon:<IoMdSearch/>,
-    //         name:"Search"
-    //     },
-    //     {
-    //         icon:<BiSolidOffer/>,
-    //         name:"Offers"
-    //     }
-    //    ]
+     const  social=[
+        {
+            icon:<IoMdSearch/>,
+            name:"Search"
+        },
+        {
+            icon:<BiSolidOffer/>,
+            name:"Offers",
+            sup:"New"
+        },
+        {
+          icon:<IoIosHelpBuoy/>,
+          name:"Help"
+        },
+        {
+          icon:<PiSignIn/>,
+          name:"Sign In" 
+        },
+        {
+          icon:<FaCartArrowDown/>,
+          name:"Cart",
+        }
+       ]
   return (
 
     <>
@@ -51,24 +59,24 @@ function Header() {
                <img src="images/logo.jpeg" alt="" className='w-full ' />
             </div>
             <div>
-        <span className='font-bold  border-b-[3px] border-black text-[#fc8019]'>Ranchi</span> Jharkhand <RxCaretDown  onClick={showSideMenu}fontSize={25}className=' font-bold inline  text-[#fc8019] cursor-pointer' />
+        <span className='cursor-pointer font-bold  border-b-[3px] border-black hover:text-[#fc8019]'onClick={showSideMenu}>Other</span> Ranchi <RxCaretDown  onClick={showSideMenu}fontSize={25}className=' font-bold inline  text-[#fc8019] cursor-pointer' />
 
             </div>
 
-             <div className='flex list-none  gap-10 ml-auto font-lighter text-[18px]'>
-                <li className='flex items-center gap-3'><IoMdSearch/>
-                    Search</li>
-                <li className='flex items-center gap-3'><BiSolidOffer/>
-                    Offers</li>
-                <li className='flex items-center gap-3'><IoIosHelpBuoy/>
-                    Help</li>
-                <li className='flex items-center gap-3'><PiSignIn />
-                    Sign In</li> 
-                <li className='flex items-center gap-3'><FaCartArrowDown/>
-                    Cart</li>
+             <nav className='flex list-none  gap-10 ml-auto font-lighter text-[20px]'>
+              {
+                social.map((socialink,index)=>{
+               return <li key={index} className='cursor-pointer flex hover:text-[#fc8019] items-center gap-3'>{socialink.icon}
+                   {socialink.name}
+                   <sup>{socialink.sup}</sup>
+                   </li>
+
+                })
+              }
 
 
-            </div>
+
+            </nav>
         </div>
 
     </header>
